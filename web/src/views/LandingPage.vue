@@ -12,7 +12,8 @@
         <div class="modal" v-if="showModal">
             <div class="modal-content">
                 <span class="close" @click="closeModal">&times;</span>
-                <h2>Cadastro</h2>
+                <h2>Cadastre-se</h2>
+                <p >Esperimente dois dias grátis!</p>
                 <form @submit.prevent="submitForm">
                     <div class="roww">
                     <label for="email" class="label">Email:</label>
@@ -24,6 +25,7 @@
                 </div>
                     <button type="submit">Cadastrar</button>
                 </form>
+
             </div>
         </div>
 
@@ -236,7 +238,10 @@ svg {
     color: var(--tertiary-color);
     font-size: 17px;
 }
-
+.roww{
+    width: 70%;
+    justify-content: center;
+}
 .service .row {
     margin-top: 5%;
     display: flex;
@@ -296,6 +301,7 @@ svg {
   max-width: 80%;
   text-align: center;
   border-radius: 30px;
+  color: var(--primary-color);
 }
 
 .close {
