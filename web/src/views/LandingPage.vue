@@ -38,7 +38,7 @@
         <div class="main">
             <h1>Chegou a hora de levar seu petshop para o próximo nível<br> com nosso sistema de gestão moderno e eficiente
             </h1>
-            <a href="#" @click="openModal">Explore mais</a>
+            <a href="#" @click="openModal">Faça um teste</a>
         </div>
         <div class="right-box">
             <img src="../assets/imagem/image-rightbox.png" alt="">
