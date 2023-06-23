@@ -1,4 +1,5 @@
 <template>
+    <!--Nav-->
     <div class="header">
         <nav>
             <img src="../assets/imagem/image_logo.png" alt="logo"> <!--ADICIONAR LOGO-->
@@ -9,26 +10,31 @@
             </ul>
             <h1 class="menu">&#9776;</h1>
         </nav>
+        <!--Modal-->
         <div class="modal" v-if="showModal">
             <div class="modal-content">
                 <span class="close" @click="closeModal">&times;</span>
                 <h2>Cadastre-se</h2>
-                <p >Esperimente dois dias grátis!</p>
+                <p>Experimente uma demonstração grátis!</p>
                 <form @submit.prevent="submitForm">
                     <div class="roww">
-                    <label for="email" class="label">Email:</label>
-                    <input type="email" id="email" name="email" v-model="email" required>
-                </div>
-                <div class="roww">
-                    <label for="password" class="label">Senha:</label>
-                    <input type="password" id="password" name="password" v-model="password" required>
-                </div>
+                        <label for="email" class="label">Email:</label>
+                        <input type="email" id="email" name="email" v-model="email" required>
+                    </div>
+                    <div class="roww">
+                        <label for="password" class="label">Senha:</label>
+                        <input type="password" id="password" name="password" v-model="password" required>
+                    </div>
+                    <div class="roww">
+                        <label for="passwordGerente" class="label">Senha de Acesso:</label>
+                        <input type="password" id="passwordGerente" name="passwordGerente" v-model="passwordGerente" required>
+                    </div>
                     <button type="submit">Cadastrar</button>
                 </form>
 
             </div>
         </div>
-
+        <!--Main-->
         <div class="main">
             <h1>Chegou a hora de levar seu petshop para o próximo nível<br> com nosso sistema de gestão moderno e eficiente
             </h1>
@@ -43,6 +49,8 @@
             </path>
         </svg>
     </div>
+
+    <!--Serviços-->
     <div class="service">
         <h2>Serviços</h2>
         <p>testando testando</p>
@@ -78,7 +86,8 @@ export default {
         return {
             showModal: false,
             email: '',
-            password: ''
+            password: '',
+            passwordGerente: ''
         }
     },
     methods: {
@@ -89,17 +98,47 @@ export default {
             this.showModal = false;
         },
         submitForm() {
-            // Lógica para enviar o formulário (por exemplo, fazer uma requisição ao servidor)
-            console.log('Email:', this.email);
-            console.log('Senha:', this.password);
-            // Limpar campos após o envio do formulário
-            this.email = '';
-            this.password = '';
-            // Fechar o modal
-            this.closeModal();
-        }
-    },
-}
+            const payload = {
+                email: this.email,
+                password: this.password,
+                passwordGerente: this.passwordGerente
+            };
+
+            fetch('http://localhost:3000/api/register', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then((response) => {
+                if (response.ok) {
+                    swal({
+                        title: 'Sucesso!',
+                        text: 'Usuário registrado com sucesso',
+                        icon: 'success',
+                        button: 'OK'
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Erro!',
+                        text: 'Erro ao registrar usuário',
+                        icon: 'error',
+                        button: 'OK'
+                    });
+                }
+                })
+                .catch((error) => {
+                console.error('Erro ao realizar cadastro:', error);
+                this.message = 'Erro ao realizar cadastro.';
+                });
+                this.email= ''
+                this.password = ''
+                this.passwordGerente = ''
+            },
+        },
+    }
 </script>
 
 <style scoped>
@@ -173,9 +212,11 @@ export default {
     text-align: center;
 
 }
-.main h1{
+
+.main h1 {
     color: white;
 }
+
 .header .main h1 {
     font-size: 2.5rem;
     margin-top: 90px;
@@ -238,10 +279,12 @@ svg {
     color: var(--tertiary-color);
     font-size: 17px;
 }
-.roww{
+
+.roww {
     width: 70%;
     justify-content: center;
 }
+
 .service .row {
     margin-top: 5%;
     display: flex;
@@ -282,92 +325,95 @@ svg {
 /*Modal*/
 
 .modal {
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 300px;
-  max-width: 80%;
-  text-align: center;
-  border-radius: 30px;
-  color: var(--primary-color);
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 35px;
+    border: 1px solid #888;
+    width: 300px;
+    max-width: 80%;
+    text-align: center;
+    border-radius: 30px;
+    color: var(--primary-color);
 }
 
 .close {
-  color: var(--secondary-color);
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 1s;
+    color: var(--secondary-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 1s;
 }
-.modal-content h2{
+
+.modal-content h2 {
     color: var(--secondary-color);
 }
+
 .close:hover,
 .close:focus {
-  color: var(--primary-color);
-  text-decoration: none;
-  cursor: pointer;
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
 }
+
 form {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form label {
-  margin-bottom: 10px;
-  font-weight: bold;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
-.label{
+
+.label {
     display: flex;
 }
+
 form input[type="email"],
 form input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid var(--secondary-color);
-  border: none;
-  border-radius: 4px;
-  background-color: var(--tertiary-color);
-  transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    background-color: var(--tertiary-color);
+    transition: background-color 0.3s ease;
 
 }
 
 form input[type="email"]:focus,
 form input[type="password"]:focus {
-  background-color: #4c9aff70;
-  outline: none;
+    background-color: #4c9aff70;
+    outline: none;
 }
 
 form button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #4c9aff;
-  border: none;
-  color: #fff;
-  background-color: var(--secondary-color);
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.5s ease;
+    padding: 10px 20px;
+    background-color: #4c9aff;
+    border: none;
+    color: #fff;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.5s ease;
 }
 
 form button[type="submit"]:hover {
-  background-color: var(--primary-color);
-  transition: 1s;
-}
-
-</style>
+    background-color: var(--primary-color);
+    transition: 1s;
+}</style>
