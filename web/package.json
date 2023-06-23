@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "vue": "^3.2.47",
+    "vue-carousel": "^0.18.0",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
