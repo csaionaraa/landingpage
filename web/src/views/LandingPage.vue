@@ -5,7 +5,7 @@
             <img src="../assets/imagem/image_logo.png" alt="logo"> <!--ADICIONAR LOGO-->
             <ul id="navbar">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Serviços</a></li>
                 <li><a href="#">Solução</a></li>
             </ul>
             <h1 class="menu">&#9776;</h1>
@@ -420,4 +420,77 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: var(--primary-color);
     transition: 1s;
-}</style>
+}
+
+@media (max-width: 600px) {
+
+    .header{
+        height: 75vh;
+    }
+  .header nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header .menu {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    color: var(--tertiary-color);
+    cursor: pointer;
+  }
+
+  .header nav img {
+    width: 80px;
+}
+
+  .header nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .header nav ul li {
+    margin: 10px 0;
+  }
+
+  .header nav ul li a {
+    font-size: 18px;
+  }
+
+  .header nav ul li a::before {
+    display: none;
+  }
+
+  .header .main h1 {
+    font-size: 2rem;
+    margin-top: 50px;
+  }
+
+  .header .main a {
+    width: 250px;
+    font-size: 14px;
+  }
+
+  .right-box {
+    display: none;
+  }
+
+  .service .row {
+    flex-direction: column;
+  }
+
+  .service .servicecol {
+    flex-basis: 100%;
+    margin: 10% 0;
+  }
+
+  .modal-content {
+    padding: 25px;
+}
+}
+
+</style>
