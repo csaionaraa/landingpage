@@ -16,6 +16,7 @@
                 <span class="close" @click="closeModal">&times;</span>
                 <h2>Cadastre-se</h2>
                 <p>Experimente uma demonstração grátis!</p>
+                <span style="font-size: 12px; font-weight: bold;">Preencha os campos para efetuar login no sistema</span>
                 <form @submit.prevent="submitForm">
                     <div class="roww">
                         <label for="email" class="label">Email:</label>
@@ -26,7 +27,7 @@
                         <input type="password" id="password" name="password" v-model="password" required>
                     </div>
                     <div class="roww">
-                        <label for="passwordGerente" class="label">Senha de Acesso:</label>
+                        <label for="passwordGerente" class="label">Senha do Gerente:</label>
                         <input type="password" id="passwordGerente" name="passwordGerente" v-model="passwordGerente" required>
                     </div>
                     <button type="submit">Cadastrar</button>
@@ -36,7 +37,7 @@
         </div>
         <!--Main-->
         <div class="main">
-            <h1>Chegou a hora de levar seu petshop para o próximo nível<br> com nosso sistema de gestão moderno e eficiente
+            <h1>Chegou a hora de levar seu petshop para o próximo nível<br> com nosso sistema de gestão moderno e eficiente.<br>
             </h1>
             <a href="#" @click="openModal">Faça um teste</a>
         </div>
@@ -118,7 +119,9 @@ export default {
                         text: 'Usuário registrado com sucesso',
                         icon: 'success',
                         button: 'OK'
-                    });
+                    }).then(() => {
+                        window.location.href = 'https://tccpetshop.vercel.app/'; // Substitua com o URL do site para o qual deseja redirecionar
+                        });
                 }
                 else {
                     swal({
@@ -136,6 +139,7 @@ export default {
                 this.email= ''
                 this.password = ''
                 this.passwordGerente = ''
+                this.closeModal();
             },
         },
     }
@@ -228,7 +232,7 @@ export default {
     text-decoration: none;
     width: 350px;
     font-size: 15px;
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
     font-weight: bold;
     background-color: var(--primary-color);
     border: 2px solid var(--primary-color);
@@ -331,7 +335,7 @@ svg {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
