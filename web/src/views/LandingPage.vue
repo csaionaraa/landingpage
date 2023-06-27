@@ -114,6 +114,10 @@
         </div>
     </div>
 
+    <div class="back-to-top" v-if="showBackToTop" @click="scrollToTop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+
     <footer>
         <div class="bottom-details">
             <div class="bottom_text">
@@ -131,6 +135,7 @@ export default {
             email: '',
             password: '',
             passwordGerente: '',
+            showBackToTop: false,
             activeIndex: 0,
             carouselTimer: null,
             carouselItems: [
@@ -146,11 +151,15 @@ export default {
             ]
         }
     },
+    mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
     created() {
     this.startCarouselTimer();
   },
   destroyed() {
     this.stopCarouselTimer();
+    window.removeEventListener('scroll', this.handleScroll);
   },
     methods: {
         openModal() {
@@ -215,6 +224,15 @@ export default {
     stopCarouselTimer() {
       clearInterval(this.carouselTimer);
       this.carouselTimer = null;
+    },
+    handleScroll() {
+      this.showBackToTop = window.scrollY > 500;
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
 
     },
@@ -559,6 +577,31 @@ form button[type="submit"]:hover {
 
 .carousel-control-next {
     right: 20px;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #eaeaea;
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.back-to-top:hover {
+  background-color: #cccccc;
+}
+
+.back-to-top.show {
+  opacity: 1;
 }
 
 footer {
