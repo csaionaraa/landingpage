@@ -15,8 +15,7 @@
             <div class="modal-content">
                 <span class="close" @click="closeModal">&times;</span>
                 <h2>Cadastre-se</h2>
-                <p>Experimente uma demonstração grátis!</p>
-                <span style="font-size: 12px; font-weight: bold;">Preencha os campos para efetuar login no sistema</span>
+                <p class="modaltext">Experimente uma demonstração grátis!</p>
                 <form @submit.prevent="submitForm">
                     <div class="roww">
                         <label for="email" class="label">Email:</label>
@@ -26,10 +25,6 @@
                         <label for="password" class="label">Senha:</label>
                         <input type="password" id="password" name="password" v-model="password" required>
                     </div>
-                    <div class="roww">
-                        <label for="passwordGerente" class="label">Senha do Gerente:</label>
-                        <input type="password" id="passwordGerente" name="passwordGerente" v-model="passwordGerente" required>
-                    </div>
                     <button type="submit">Cadastrar</button>
                 </form>
 
@@ -37,7 +32,8 @@
         </div>
         <!--Main-->
         <div class="main">
-            <h1>Chegou a hora de levar seu petshop para o próximo nível<br> com nosso sistema de gestão moderno e eficiente.<br>
+            <h1>Chegou a hora de levar seu petshop para o próximo nível<br> com nosso sistema de gestão moderno e
+                eficiente.<br>
             </h1>
             <a href="#" @click="openModal">Faça um teste</a>
         </div>
@@ -76,7 +72,20 @@
                 </div>
                 <h4>Playing</h4>
                 <p>testando testando testando</p>
+
             </div>
+        </div>
+        <!--Carousel-->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div v-for="(item, index) in carouselItems" :key="index"
+                    :class="['carousel-item', { 'active': index === activeIndex }]">
+                    <img :src="item.image" :alt="item.caption" class="carousel-image">
+                    <div class="carousel-caption">{{ item.caption }}</div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
+            <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
         </div>
     </div>
 </template>
@@ -88,7 +97,22 @@ export default {
             showModal: false,
             email: '',
             password: '',
-            passwordGerente: ''
+            passwordGerente: '',
+            activeIndex: 0,
+            carouselItems: [
+                {
+                    image: "../src/assets/imagem/care1.png",
+                    caption: "Imagem 1"
+                },
+                {
+                    image: "../src/assets/imagem/img2.png",
+                    caption: "Imagem 2"
+                },
+                {
+                    image: "../src/assets/imagem/img3.png",
+                    caption: "Imagem 3"
+                }
+            ]
         }
     },
     methods: {
@@ -108,41 +132,48 @@ export default {
             fetch('http://localhost:3000/api/register', {
                 method: 'POST',
                 headers: {
-                'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload)
             })
-            .then((response) => {
-                if (response.ok) {
-                    swal({
-                        title: 'Sucesso!',
-                        text: 'Usuário registrado com sucesso',
-                        icon: 'success',
-                        button: 'OK'
-                    }).then(() => {
-                        window.location.href = 'https://tccpetshop.vercel.app/'; // Substitua com o URL do site para o qual deseja redirecionar
+                .then((response) => {
+                    if (response.ok) {
+                        swal({
+                            title: 'Sucesso!',
+                            text: 'Usuário registrado com sucesso',
+                            icon: 'success',
+                            button: 'OK'
+                        }).then(() => {
+                            window.location.href = 'https://tccpetshop.vercel.app/'; // Substitua com o URL do site para o qual deseja redirecionar
                         });
-                }
-                else {
-                    swal({
-                        title: 'Erro!',
-                        text: 'Erro ao registrar usuário',
-                        icon: 'error',
-                        button: 'OK'
-                    });
-                }
+                    }
+                    else {
+                        swal({
+                            title: 'Erro!',
+                            text: 'Erro ao registrar usuário',
+                            icon: 'error',
+                            button: 'OK'
+                        });
+                    }
                 })
                 .catch((error) => {
-                console.error('Erro ao realizar cadastro:', error);
-                this.message = 'Erro ao realizar cadastro.';
+                    console.error('Erro ao realizar cadastro:', error);
+                    this.message = 'Erro ao realizar cadastro.';
                 });
-                this.email= ''
-                this.password = ''
-                this.passwordGerente = ''
-                this.closeModal();
-            },
+            this.email = ''
+            this.password = ''
+            this.passwordGerente = ''
+            this.closeModal();
         },
-    }
+        prevSlide() {
+            this.activeIndex = (this.activeIndex - 1 + this.carouselItems.length) % this.carouselItems.length;
+        },
+        nextSlide() {
+            this.activeIndex = (this.activeIndex + 1) % this.carouselItems.length;
+        }
+
+    },
+}
 </script>
 
 <style scoped>
@@ -327,6 +358,12 @@ svg {
 }
 
 /*Modal*/
+.modaltext {
+    font-size: 0.8rem;
+    margin-bottom: -4px;
+    color: #5a5858;
+    margin-left: 12px;
+}
 
 .modal {
     position: fixed;
@@ -362,6 +399,7 @@ svg {
 
 .modal-content h2 {
     color: var(--secondary-color);
+    margin-left: 12px;
 }
 
 .close:hover,
@@ -415,82 +453,149 @@ form button[type="submit"] {
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.5s ease;
+    margin-top: 11px;
 }
 
 form button[type="submit"]:hover {
     background-color: var(--primary-color);
     transition: 1s;
+
 }
 
+/*care section*/
+/*carousel*/
+
+.carousel {
+    position: relative;
+    width: 50%;
+    height: 300px;
+
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+/*RESPONSIVIDADE*/
 @media (max-width: 600px) {
 
-    .header{
+    .header {
         height: 75vh;
     }
-  .header nav {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .header .menu {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 25px;
-    color: var(--tertiary-color);
-    cursor: pointer;
-  }
+    .header nav {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .header nav img {
-    width: 80px;
+    .header .menu {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 25px;
+        color: var(--tertiary-color);
+        cursor: pointer;
+    }
+
+    .header nav img {
+        width: 80px;
+    }
+
+    .header nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 60px;
+    }
+
+    .header nav ul li {
+        margin: 10px 0;
+    }
+
+    .header nav ul li a {
+        font-size: 18px;
+    }
+
+    .header nav ul li a::before {
+        display: none;
+    }
+
+    .header .main h1 {
+        font-size: 2rem;
+        margin-top: 50px;
+    }
+
+    .header .main a {
+        width: 250px;
+        font-size: 14px;
+    }
+
+    .right-box {
+        display: none;
+    }
+
+    .service .row {
+        flex-direction: column;
+    }
+
+    .service .servicecol {
+        flex-basis: 100%;
+        margin: 10% 0;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
 }
-
-  .header nav ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 60px;
-  }
-
-  .header nav ul li {
-    margin: 10px 0;
-  }
-
-  .header nav ul li a {
-    font-size: 18px;
-  }
-
-  .header nav ul li a::before {
-    display: none;
-  }
-
-  .header .main h1 {
-    font-size: 2rem;
-    margin-top: 50px;
-  }
-
-  .header .main a {
-    width: 250px;
-    font-size: 14px;
-  }
-
-  .right-box {
-    display: none;
-  }
-
-  .service .row {
-    flex-direction: column;
-  }
-
-  .service .servicecol {
-    flex-basis: 100%;
-    margin: 10% 0;
-  }
-
-  .modal-content {
-    padding: 25px;
-}
-}
-
 </style>
