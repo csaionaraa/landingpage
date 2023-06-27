@@ -55,21 +55,21 @@
         <div class="row">
             <div class="servicecol">
                 <div class="service-offer">
-                    <img src="../assets/imagem/img1.png" alt=""> <!--ADICIONAR IMAGEM-->
+                    <img src="../assets/imagem/img1.png" alt="">
                 </div>
                 <h4>Agendamento de Pet</h4>
                 <p>testando testando testando</p>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
-                    <img src="../assets/imagem/img3.png" alt=""> <!--ADICIONAR IMAGEM-->
+                    <img src="../assets/imagem/img3.png" alt="">
                 </div>
                 <h4>Frente de Caixa</h4>
                 <p>testando testando testando</p>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
-                    <img src="../assets/imagem/img2.png" alt=""> <!--ADICIONAR IMAGEM-->
+                    <img src="../assets/imagem/img2.png" alt="">
                 </div>
                 <h4>Gestão de Clientes</h4>
                 <p>testando testando testando</p>
@@ -78,21 +78,21 @@
         <div class="row">
             <div class="servicecol">
                 <div class="service-offer">
-                    <img src="../assets/imagem/img1.png" alt=""> <!--ADICIONAR IMAGEM-->
+                    <img src="../assets/imagem/img1.png" alt="">
                 </div>
                 <h4>Gestão de Funcionários</h4>
                 <p>testando testando testando</p>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
-                    <img src="../assets/imagem/img3.png" alt=""> <!--ADICIONAR IMAGEM-->
+                    <img src="../assets/imagem/img3.png" alt="">
                 </div>
                 <h4>Gestão de Produtos</h4>
                 <p>testando testando testando</p>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
-                    <img src="../assets/imagem/img2.png" alt=""> <!--ADICIONAR IMAGEM-->
+                    <img src="../assets/imagem/img2.png" alt="">
                 </div>
                 <h4>Gestão de Fornecedores</h4>
                 <p>testando testando testando</p>
@@ -540,11 +540,11 @@ form button[type="submit"]:hover {
 }
 
 .carousel-control-prev {
-    left: 100px;
+    left: 20px;
 }
 
 .carousel-control-next {
-    right: 100px;
+    right: 20px;
 }
 
 footer {
@@ -583,11 +583,50 @@ footer .bottom-details .bottom_text {
     margin-right: 10px;
 }
 
+
+
+@media (min-width: 900px) {
+
+
+    .carousel-control-prev {
+        left: -30px;
+    }
+
+    .carousel-control-next {
+        right: -30px;
+    }
+
+    .carousel-inner {
+        width: 100%;
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .carousel-inner {
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    .carousel-control-prev {
+        left: -30px;
+    }
+
+    .carousel-control-next {
+        right: -30px;
+    }
+
+}
+
 /*RESPONSIVIDADE*/
 @media (max-width: 600px) {
 
     .header {
-        height: 65vh;
+        height: 90vh;
     }
 
     .header nav {
@@ -650,6 +689,7 @@ footer .bottom-details .bottom_text {
         flex-basis: 100%;
         margin: 10% 0;
     }
+
     .service .service-offer {
         width: 30px;
         height: 30px;
@@ -665,10 +705,11 @@ footer .bottom-details .bottom_text {
         white-space: nowrap;
     }
 
-    .carousel-control-next, .carousel-control-prev{
+    .carousel-control-next,
+    .carousel-control-prev {
         margin-top: 320px;
     }
-    
+
     .carousel-control-prev {
         left: 100px;
     }
