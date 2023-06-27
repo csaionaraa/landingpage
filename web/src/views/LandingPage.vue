@@ -138,10 +138,10 @@ export default {
                     image: "../src/assets/imagem/care1.png",
                 },
                 {
-                    image: "../src/assets/imagem/img2.png",
+                    image: "../src/assets/imagem/care2.png",
                 },
                 {
-                    image: "../src/assets/imagem/img3.png",
+                    image: "../src/assets/imagem/care3.png",
                 }
             ]
         }
@@ -328,7 +328,7 @@ svg {
 
 /*SERVICE*/
 .service {
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: center;
 }
@@ -406,7 +406,7 @@ svg {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 20% auto;
+    margin: 10% auto;
     padding: 50px;
     border: 1px solid #888;
     width: 300px;
@@ -527,13 +527,6 @@ form button[type="submit"]:hover {
 .carousel-image {
     height: 80%;
     object-fit: cover;
-    border-radius: 20px;
-}
-
-.carousel-caption {
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
 }
 
 .carousel-control-prev,
@@ -547,15 +540,15 @@ form button[type="submit"]:hover {
 }
 
 .carousel-control-prev {
-    left: 170px;
+    left: 100px;
 }
 
 .carousel-control-next {
-    right: 170px;
+    right: 100px;
 }
 
 footer {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 footer .bottom-details {
@@ -657,9 +650,35 @@ footer .bottom-details .bottom_text {
         flex-basis: 100%;
         margin: 10% 0;
     }
+    .service .service-offer {
+        width: 30px;
+        height: 30px;
+    }
 
     .modal-content {
         padding: 25px;
+    }
+
+    .carousel-inner {
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 320px;
+    }
+    
+    .carousel-control-prev {
+        left: 100px;
+    }
+
+    .carousel-control-next {
+        right: 100px;
+    }
+
+    footer {
+        margin-top: 90px;
     }
 }
 </style>
