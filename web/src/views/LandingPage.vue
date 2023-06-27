@@ -103,7 +103,6 @@
             <div class="carousel">
                 <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
                 <div class="carousel-inner">
-
                     <div v-for="(item, index) in carouselItems" :key="index"
                         :class="['carousel-item', { 'active': index === activeIndex }]">
                         <img :src="item.image" :alt="item.caption" class="carousel-image">
@@ -133,6 +132,7 @@ export default {
             password: '',
             passwordGerente: '',
             activeIndex: 0,
+            carouselTimer: null,
             carouselItems: [
                 {
                     image: "../src/assets/imagem/care1.png",
@@ -146,6 +146,12 @@ export default {
             ]
         }
     },
+    created() {
+    this.startCarouselTimer();
+  },
+  destroyed() {
+    this.stopCarouselTimer();
+  },
     methods: {
         openModal() {
             this.showModal = true;
@@ -202,7 +208,14 @@ export default {
         },
         nextSlide() {
             this.activeIndex = (this.activeIndex + 1) % this.carouselItems.length;
-        }
+        },
+        startCarouselTimer() {
+      this.carouselTimer = setInterval(this.nextSlide, 5000);
+    },
+    stopCarouselTimer() {
+      clearInterval(this.carouselTimer);
+      this.carouselTimer = null;
+    }
 
     },
 }
