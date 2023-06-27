@@ -210,7 +210,7 @@ export default {
             this.activeIndex = (this.activeIndex + 1) % this.carouselItems.length;
         },
         startCarouselTimer() {
-      this.carouselTimer = setInterval(this.nextSlide, 5000);
+      this.carouselTimer = setInterval(this.nextSlide, 8000);
     },
     stopCarouselTimer() {
       clearInterval(this.carouselTimer);
