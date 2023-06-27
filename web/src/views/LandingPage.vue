@@ -170,13 +170,14 @@ export default {
                 .then((response) => {
                     if (response.ok) {
                         swal({
-                            title: 'Sucesso!',
-                            text: 'Usuário registrado com sucesso',
-                            icon: 'success',
-                            button: 'OK'
-                        }).then(() => {
-                            window.location.href = 'https://tccpetshop.vercel.app/'; // Substitua com o URL do site para o qual deseja redirecionar
-                        });
+                        title: 'Está tudo ok ?',
+                        text: 'Tenha em mente que este email e senha serão usados para fazer login no sistema',
+                        icon: 'info',
+                        button: 'OK'
+                    }).then(() => {
+                        window.location.href = 'https://tccpetshop.vercel.app/'; // Substitua com o URL do site para o qual deseja redirecionar
+                    });
+
                     }
                     else {
                         swal({
