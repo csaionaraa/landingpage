@@ -6,7 +6,7 @@
             <ul id="navbar">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Serviços</a></li>
-                <li><a href="#">Solução</a></li>
+                <li><a href="#">Galeria</a></li>
             </ul>
             <h1 class="menu">&#9776;</h1>
         </nav>
@@ -49,45 +49,79 @@
 
     <!--Serviços-->
     <div class="service">
-        <h2>Serviços</h2>
-        <p>testando testando</p>
+        <h2 style="margin-bottom: 20px;">Serviços</h2>
+        <p>Descubra o poder do nosso sistema, transforme suas operações<br> e impulsione seu sucesso com nossos serviços
+            inovadores.</p>
         <div class="row">
             <div class="servicecol">
                 <div class="service-offer">
                     <img src="../assets/imagem/img1.png" alt=""> <!--ADICIONAR IMAGEM-->
                 </div>
-                <h4>Groming</h4>
+                <h4>Agendamento de Pet</h4>
                 <p>testando testando testando</p>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
                     <img src="../assets/imagem/img3.png" alt=""> <!--ADICIONAR IMAGEM-->
                 </div>
-                <h4>Vet Car</h4>
+                <h4>Frente de Caixa</h4>
                 <p>testando testando testando</p>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
                     <img src="../assets/imagem/img2.png" alt=""> <!--ADICIONAR IMAGEM-->
                 </div>
-                <h4>Playing</h4>
+                <h4>Gestão de Clientes</h4>
                 <p>testando testando testando</p>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="servicecol">
+                <div class="service-offer">
+                    <img src="../assets/imagem/img1.png" alt=""> <!--ADICIONAR IMAGEM-->
+                </div>
+                <h4>Gestão de Funcionários</h4>
+                <p>testando testando testando</p>
+            </div>
+            <div class="servicecol">
+                <div class="service-offer">
+                    <img src="../assets/imagem/img3.png" alt=""> <!--ADICIONAR IMAGEM-->
+                </div>
+                <h4>Gestão de Produtos</h4>
+                <p>testando testando testando</p>
+            </div>
+            <div class="servicecol">
+                <div class="service-offer">
+                    <img src="../assets/imagem/img2.png" alt=""> <!--ADICIONAR IMAGEM-->
+                </div>
+                <h4>Gestão de Fornecedores</h4>
+                <p>testando testando testando</p>
             </div>
         </div>
         <!--Carousel-->
-        <div class="carousel">
-            <div class="carousel-inner">
-                <div v-for="(item, index) in carouselItems" :key="index"
-                    :class="['carousel-item', { 'active': index === activeIndex }]">
-                    <img :src="item.image" :alt="item.caption" class="carousel-image">
-                    <div class="carousel-caption">{{ item.caption }}</div>
+        <div class="carouselContainer">
+            <div class="carousel">
+                <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
+                <div class="carousel-inner">
+
+                    <div v-for="(item, index) in carouselItems" :key="index"
+                        :class="['carousel-item', { 'active': index === activeIndex }]">
+                        <img :src="item.image" :alt="item.caption" class="carousel-image">
+                    </div>
                 </div>
+                <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
+                <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
             </div>
-            <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
-            <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
         </div>
     </div>
+
+    <footer>
+        <div class="bottom-details">
+            <div class="bottom_text">
+                <span class="copyright_text">Copyright © 2023 All rights reserved</span>
+            </div>
+        </div>
+    </footer>
 </template>
 
 <script>
@@ -102,15 +136,12 @@ export default {
             carouselItems: [
                 {
                     image: "../src/assets/imagem/care1.png",
-                    caption: "Imagem 1"
                 },
                 {
                     image: "../src/assets/imagem/img2.png",
-                    caption: "Imagem 2"
                 },
                 {
                     image: "../src/assets/imagem/img3.png",
-                    caption: "Imagem 3"
                 }
             ]
         }
@@ -297,7 +328,6 @@ svg {
 
 /*SERVICE*/
 .service {
-    padding-top: 1rem;
     width: 80%;
     margin: auto;
     text-align: center;
@@ -321,7 +351,6 @@ svg {
 }
 
 .service .row {
-    margin-top: 5%;
     display: flex;
     justify-content: space-around;
 }
@@ -359,10 +388,9 @@ svg {
 
 /*Modal*/
 .modaltext {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-bottom: -4px;
     color: #5a5858;
-    margin-left: 12px;
 }
 
 .modal {
@@ -378,8 +406,8 @@ svg {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
-    padding: 35px;
+    margin: 20% auto;
+    padding: 50px;
     border: 1px solid #888;
     width: 300px;
     max-width: 80%;
@@ -462,14 +490,18 @@ form button[type="submit"]:hover {
 
 }
 
-/*care section*/
 /*carousel*/
+
+.carouselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .carousel {
     position: relative;
-    width: 50%;
-    height: 300px;
-
+    width: 100%;
+    height: 700px;
 }
 
 .carousel-inner {
@@ -493,16 +525,12 @@ form button[type="submit"]:hover {
 }
 
 .carousel-image {
-    width: 50%;
-    height: 100%;
+    height: 80%;
     object-fit: cover;
+    border-radius: 20px;
 }
 
 .carousel-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -511,7 +539,7 @@ form button[type="submit"]:hover {
 .carousel-control-prev,
 .carousel-control-next {
     position: absolute;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     font-size: 30px;
     color: #fff;
@@ -519,18 +547,54 @@ form button[type="submit"]:hover {
 }
 
 .carousel-control-prev {
-    left: 20px;
+    left: 170px;
 }
 
 .carousel-control-next {
-    right: 20px;
+    right: 170px;
+}
+
+footer {
+    margin-top: 100px;
+}
+
+footer .bottom-details {
+    width: 100%;
+    background: var(--secondary-color);
+    display: flex;
+    align-items: center;
+}
+
+footer .bottom-details .bottom_text {
+    max-width: 1250px;
+    margin: auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.bottom-details .bottom_text a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.bottom-details .bottom_text a {
+    margin-right: 10px;
 }
 
 /*RESPONSIVIDADE*/
 @media (max-width: 600px) {
 
     .header {
-        height: 75vh;
+        height: 65vh;
     }
 
     .header nav {

@@ -18,11 +18,11 @@ app.use(function(req, res, next) {
 
 // Configurações de conexão com o banco de dados
 const db = mysql.createConnection({
-  host: 'containers-us-west-64.railway.app',
+  host: '34.95.242.142',
   user:  'root',
-  password: '26IfCsi5IXU0WvDtdIEd',
-  database: 'railway',
-  port: '5564'
+  password: 'sStvK?Uezdfi8?0',
+  database: 'petshop_db',
+  port: '3306'
 });
 
 // Verifica se a conexão foi estabelecida com sucesso
