@@ -58,44 +58,21 @@
                     <img src="../assets/imagem/img1.png" alt="">
                 </div>
                 <h4>Agendamento de Pet</h4>
-                <p>testando testando testando</p>
+                <h6 class="servicep">Facilitamos o agendamento de serviços e consultas através de uma interface online.</h6>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
                     <img src="../assets/imagem/img3.png" alt="">
                 </div>
                 <h4>Frente de Caixa</h4>
-                <p>testando testando testando</p>
+                <h6 class="servicep">Frente de caixa eficiente, que agiliza o processo de vendas e pagamentos.</h6>
             </div>
             <div class="servicecol">
                 <div class="service-offer">
                     <img src="../assets/imagem/img2.png" alt="">
                 </div>
-                <h4>Gestão de Clientes</h4>
-                <p>testando testando testando</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="servicecol">
-                <div class="service-offer">
-                    <img src="../assets/imagem/img1.png" alt="">
-                </div>
-                <h4>Gestão de Funcionários</h4>
-                <p>testando testando testando</p>
-            </div>
-            <div class="servicecol">
-                <div class="service-offer">
-                    <img src="../assets/imagem/img3.png" alt="">
-                </div>
-                <h4>Gestão de Produtos</h4>
-                <p>testando testando testando</p>
-            </div>
-            <div class="servicecol">
-                <div class="service-offer">
-                    <img src="../assets/imagem/img2.png" alt="">
-                </div>
-                <h4>Gestão de Fornecedores</h4>
-                <p>testando testando testando</p>
+                <h4>Gestão Integrada</h4>
+                <h6 class="servicep">Nosso sistema permite a gestão eficiente de clientes, pets, funcionários, produtos e fornecedores.</h6>
             </div>
         </div>
         <!--Carousel-->

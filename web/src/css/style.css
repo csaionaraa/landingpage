@@ -133,6 +133,7 @@ svg {
 .service p {
     color: var(--tertiary-color);
     font-size: 17px;
+    font-style: italic;
 }
 
 .roww {
@@ -149,8 +150,8 @@ svg {
     flex-basis: 30%;
     border: 1px solid var(--secondary-color);
     color: var(--tertiary-color);
-    margin: 5% 0;
-    padding: 1rem 0.5rem;
+    margin: 8% 0;
+    padding: 1.5rem 0.3rem;
     position: relative;
 }
 
@@ -173,9 +174,15 @@ svg {
 }
 
 .service .service-offer img {
-    width: 100%;
+    width: 92%;
 }
-
+.servicep{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 100;
+    color: rgb(234, 222, 222);
+    margin-top: 15px;
+}
 /*Modal*/
 .modaltext {
     font-size: 0.9rem;
@@ -313,7 +320,9 @@ form button[type="submit"]:hover {
 .carousel-item.active {
     display: block;
 }
-
+img .carousel-image{
+    border-radius: 10px;
+}
 .carousel-image {
     height: 80%;
     object-fit: cover;
@@ -460,7 +469,7 @@ footer .bottom-details .bottom_text {
     }
 
     .header nav img {
-        width: 80px;
+        width: 40%;
     }
 
     .header nav ul {
@@ -472,6 +481,10 @@ footer .bottom-details .bottom_text {
 
     .header nav ul li {
         margin: 10px 0;
+    }
+
+    .service .service-offer img {
+        width: 100%;
     }
 
     .header nav ul li a {
@@ -524,7 +537,7 @@ footer .bottom-details .bottom_text {
     .carousel-control-prev {
         margin-top: 320px;
     }
-
+    
     .carousel-control-prev {
         left: 100px;
     }
