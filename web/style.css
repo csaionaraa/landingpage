@@ -15,3 +15,6 @@ body{
     --secondary-color:#1E90FF;
     --tertiary-color: #e2ebf4;
 }
+html{
+    scroll-behavior: smooth;
+}

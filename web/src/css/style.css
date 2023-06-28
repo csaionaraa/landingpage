@@ -90,7 +90,7 @@
     border: 2px solid var(--primary-color);
     border-radius: 4px;
     transition: 0.9s;
-    color: #e2ebf4cb;
+    color: #e2ebf4cb;/
 }
 
 .header .main a:hover {
@@ -326,6 +326,7 @@ img .carousel-image{
 .carousel-image {
     height: 80%;
     object-fit: cover;
+    border-radius: 12px;
 }
 
 .carousel-control-prev,
@@ -420,7 +421,7 @@ footer .bottom-details .bottom_text {
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px) { gfcj
 
     .header {
         height: 90vh;
