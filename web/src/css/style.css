@@ -338,14 +338,6 @@ img .carousel-image{
     cursor: pointer;
 }
 
-.carousel-control-prev {
-    left: 20px;
-}
-
-.carousel-control-next {
-    right: 20px;
-}
-
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -407,7 +399,7 @@ footer .bottom-details .bottom_text {
     margin-right: 10px;
 }
 
-
+/*RESPONSIVIDADE*/
 
 @media (min-width: 900px) {
 
@@ -428,25 +420,6 @@ footer .bottom-details .bottom_text {
 
 }
 
-@media (max-width: 900px) {
-
-    .carousel-inner {
-        width: 100%;
-        overflow-x: scroll;
-        white-space: nowrap;
-    }
-
-    .carousel-control-prev {
-        left: -30px;
-    }
-
-    .carousel-control-next {
-        right: -30px;
-    }
-
-}
-
-/*RESPONSIVIDADE*/
 @media (max-width: 600px) {
 
     .header {

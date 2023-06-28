@@ -3,6 +3,7 @@
     <div class="header">
         <nav>
             <img src="../assets/imagem/image_logo.png" alt="logo"> <!--ADICIONAR LOGO-->
+            <h1 style="color: white; font-weight: bold; font-size: 36px;">Doo Pets</h1>
             <ul id="navbar">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Serviços</a></li>
