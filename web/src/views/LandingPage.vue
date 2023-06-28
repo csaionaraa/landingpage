@@ -162,7 +162,7 @@ export default {
                 passwordGerente: this.passwordGerente
             };
 
-            fetch('http://localhost:3000/api/register', {
+            fetch('https://petshoptcc.ew.r.appspot.com/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
