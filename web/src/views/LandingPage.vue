@@ -120,13 +120,13 @@ export default {
             carouselTimer: null,
             carouselItems: [
                 {
-                    image: "../src/assets/imagem/care1.png",
+                    image: "../assets/imagem/care1.png",
                 },
                 {
-                    image: "../src/assets/imagem/care2.png",
+                    image: "../assets/imagem/care2.png",
                 },
                 {
-                    image: "../src/assets/imagem/care3.png",
+                    image: "../assets/imagem/care3.png",
                 }
             ]
         }
