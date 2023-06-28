@@ -77,18 +77,18 @@
         </div>
         <!--Carousel-->
         <div class="carouselContainer">
-            <div class="carousel">
-                <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
-                <div class="carousel-inner">
-                    <div v-for="(item, index) in carouselItems" :key="index"
-                        :class="['carousel-item', { 'active': index === activeIndex }]">
-                        <img :src="item.image" :alt="item.caption" class="carousel-image">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
-                <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
+    <div class="carousel">
+        <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
+        <div class="carousel-inner">
+            <div v-for="(image, index) in images" :key="index"
+                :class="['carousel-item', { 'active': index === activeIndex }]">
+                <img :src="image" :alt="'Imagem ' + (index + 1)" class="carousel-image">
             </div>
         </div>
+        <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
+        <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
+    </div>
+</div>
     </div>
     <!--Botão back to top-->
     <div class="back-to-top" v-if="showBackToTop" @click="scrollToTop">
@@ -118,16 +118,11 @@ export default {
             showBackToTop: false,
             activeIndex: 0,
             carouselTimer: null,
-            carouselItems: [
-                {
-                    image: "../assets/imagem/care1.png",
-                },
-                {
-                    image: "../assets/imagem/care2.png",
-                },
-                {
-                    image: "../assets/imagem/care3.png",
-                }
+            activeIndex: 0,
+            images: [
+                "../src/views/care1.png",
+                "../src/views/care2.png",
+                "../src/views/care3.png"
             ]
         }
     },
@@ -198,21 +193,22 @@ export default {
         },
 
         prevSlide() {
-            this.activeIndex = (this.activeIndex - 1 + this.carouselItems.length) % this.carouselItems.length;
+            this.activeIndex = (this.activeIndex - 1 + this.images.length) % this.images.length;
         },
-
         nextSlide() {
-            this.activeIndex = (this.activeIndex + 1) % this.carouselItems.length;
+            this.activeIndex = (this.activeIndex + 1) % this.images.length;
         },
 
-        startCarouselTimer() {
-            this.carouselTimer = setInterval(this.nextSlide, 8000);
-        },
+startCarouselTimer() {
+    this.carouselTimer = setInterval(() => {
+        this.nextSlide();
+    }, 8000);
+},
 
-        stopCarouselTimer() {
-            clearInterval(this.carouselTimer);
-            this.carouselTimer = null;
-        },
+stopCarouselTimer() {
+    clearInterval(this.carouselTimer);
+    this.carouselTimer = null;
+},
 
         handleScroll() {
             this.showBackToTop = window.scrollY > 500;
