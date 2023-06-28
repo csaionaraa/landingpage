@@ -40,7 +40,7 @@
         <div class="right-box">
             <img src="../assets/imagem/image-rightbox.png" alt="">
         </div>
-        <svg style="margin: -1;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg style="margin-bottom: -1;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#04294d" fill-opacity="1"
                 d="M0,32L48,53.3C96,75,192,117,288,144C384,171,480,181,576,186.7C672,192,768,192,864,213.3C960,235,1056,277,1152,282.7C1248,288,1344,256,1392,240L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
             </path>
