@@ -115,7 +115,6 @@ export default {
             showModal: false,
             email: '',
             password: '',
-            passwordGerente: '',
             showBackToTop: false,
             activeIndex: 0,
             carouselTimer: null,
@@ -159,7 +158,6 @@ export default {
             const payload = {
                 email: this.email,
                 password: this.password,
-                passwordGerente: this.passwordGerente
             };
 
             fetch('https://petshoptcc.ew.r.appspot.com/register', {
@@ -177,7 +175,7 @@ export default {
                             icon: 'info',
                             button: 'OK'
                         }).then(() => {
-                            window.location.href = 'https://tccpetshop.vercel.app/'; // Substitua com o URL do site para o qual deseja redirecionar
+                            window.location.href = 'https://tccpetshop.vercel.app/'; 
                         });
 
                     }
@@ -196,7 +194,6 @@ export default {
                 });
             this.email = ''
             this.password = ''
-            this.passwordGerente = ''
             this.closeModal();
         },
 
