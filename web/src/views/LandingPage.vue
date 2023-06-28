@@ -77,18 +77,23 @@
         </div>
         <!--Carousel-->
         <div class="carouselContainer">
-    <div class="carousel">
-        <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
-        <div class="carousel-inner">
-            <div v-for="(image, index) in images" :key="index"
-                :class="['carousel-item', { 'active': index === activeIndex }]">
-                <img :src="image" :alt="'Imagem ' + (index + 1)" class="carousel-image">
+            <div class="carousel">
+                <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/imagem/care1.png" alt="Imagem 1" class="carousel-image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/imagem/care2.png" alt="Imagem 2" class="carousel-image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/imagem/care3.png" alt="Imagem 3" class="carousel-image">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
+                <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
             </div>
         </div>
-        <a class="carousel-control-prev" @click="prevSlide">&#10094;</a>
-        <a class="carousel-control-next" @click="nextSlide">&#10095;</a>
-    </div>
-</div>
     </div>
     <!--Botão back to top-->
     <div class="back-to-top" v-if="showBackToTop" @click="scrollToTop">
@@ -118,12 +123,6 @@ export default {
             showBackToTop: false,
             activeIndex: 0,
             carouselTimer: null,
-            activeIndex: 0,
-            images: [
-                "../src/views/care1.png",
-                "../src/views/care2.png",
-                "../src/views/care3.png"
-            ]
         }
     },
 
@@ -193,11 +192,28 @@ export default {
         },
 
         prevSlide() {
-            this.activeIndex = (this.activeIndex - 1 + this.images.length) % this.images.length;
-        },
-        nextSlide() {
-            this.activeIndex = (this.activeIndex + 1) % this.images.length;
-        },
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const totalItems = carouselItems.length;
+        const currentIndex = this.activeIndex;
+        const newIndex = (currentIndex - 1 + totalItems) % totalItems;
+
+        carouselItems[currentIndex].classList.remove('active');
+        carouselItems[newIndex].classList.add('active');
+
+        this.activeIndex = newIndex;
+    },
+
+nextSlide() {
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const totalItems = carouselItems.length;
+    const currentIndex = this.activeIndex;
+    const newIndex = (currentIndex + 1) % totalItems;
+
+    carouselItems[currentIndex].classList.remove('active');
+    carouselItems[newIndex].classList.add('active');
+
+    this.activeIndex = newIndex;
+},
 
 startCarouselTimer() {
     this.carouselTimer = setInterval(() => {
