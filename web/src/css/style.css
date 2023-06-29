@@ -428,7 +428,7 @@ footer .bottom-details .bottom_text {
     }
 
     .header nav {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
 
@@ -441,16 +441,19 @@ footer .bottom-details .bottom_text {
         color: var(--tertiary-color);
         cursor: pointer;
     }
-
+    
     .header nav img {
-        width: 40%;
+        width: 20%;
+    }
+
+    nav h1{
+        margin-left: 20;
     }
 
     .header nav ul {
-        display: none;
         flex-direction: column;
-        align-items: center;
-        margin-top: 60px;
+        z-index: 9999;
+        transition: 1s;
     }
 
     .header nav ul li {
