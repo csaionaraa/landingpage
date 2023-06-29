@@ -421,7 +421,7 @@ footer .bottom-details .bottom_text {
 
 }
 
-@media (max-width: 600px) { gfcj
+@media (max-width: 600px) {
 
     .header {
         height: 90vh;
@@ -499,6 +499,7 @@ footer .bottom-details .bottom_text {
 
     .modal-content {
         padding: 25px;
+        margin-top: 250px;
     }
 
     .carousel-inner {
