@@ -2,12 +2,14 @@
     <!--Nav-->
     <div class="header">
         <nav>
-            <img src="../assets/imagem/image_logo.png" alt="logo"> <!--ADICIONAR LOGO-->
-            <h1 style="color: white; font-weight: bold; font-size: 36px;">Doo Pets</h1>
+            <div class="logo">
+                <img src="../assets/imagem/image_logo.png" alt="logo"> <!--ADICIONAR LOGO-->
+                <img src="../assets/imagem/logonome.png" alt="logonome">
+            </div>
             <ul id="navbar">
                 <li><a href="#um">Home</a></li>
                 <li><a href="#dois">Serviços</a></li>
-                <li><a href="#tres">Galeria</a></li>
+                <li><a href="#tres">Carousel</a></li>
             </ul>
         </nav>
         <!--Modal-->
@@ -78,7 +80,7 @@
         <!--Carousel-->
         <div class="carouselContainer" id="tres">
             <div class="carousel">
-                <h2 style="margin-bottom: 50px;">Galeria de Imagens</h2>
+                <h2 style="margin-bottom: 50px;">Carousel de Imagens</h2>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="../assets/imagem/care1.png" alt="Imagem 1" class="carousel-image">

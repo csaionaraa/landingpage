@@ -5,6 +5,12 @@
     position: relative;
 }
 
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header nav {
     width: 90%;
     margin: auto;
@@ -443,15 +449,23 @@ footer .bottom-details .bottom_text {
     }
     
     .header nav img {
-        width: 20%;
+        width: 100%;
+    }
+
+    .logo{
+        flex-direction: column;
+    }
+
+    .logo img:nth-child(2){
+        display: none;
     }
 
     nav h1{
-        margin-left: 20;
+        display: none;
     }
 
     .header nav ul {
-        flex-direction: column;
+        flex-direction: row;
         z-index: 9999;
         transition: 1s;
     }
@@ -465,7 +479,7 @@ footer .bottom-details .bottom_text {
     }
 
     .header nav ul li a {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .header nav ul li a::before {
