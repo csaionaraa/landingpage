@@ -173,7 +173,6 @@ export default {
                         }).then(() => {
                             window.location.href = 'https://doo-pets.vercel.app/'; 
                         });
-
                     }
                     else {
                         swal({
