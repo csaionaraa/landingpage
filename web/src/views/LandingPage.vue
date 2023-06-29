@@ -171,7 +171,7 @@ export default {
                             icon: 'info',
                             button: 'OK'
                         }).then(() => {
-                            window.location.href = 'https://tccpetshop.vercel.app/'; 
+                            window.location.href = 'https://doo-pets.vercel.app/'; 
                         });
 
                     }
