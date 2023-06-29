@@ -1,5 +1,26 @@
 <template>
     <!--Nav-->
+    <div v-if="loading" class="loading-overlay">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+    </div>
+
     <div class="header">
         <nav>
             <div class="logo">
@@ -40,7 +61,7 @@
             <a href="#" @click="openModal">Faça um teste</a>
         </div>
         <div class="right-box">
-            <img src="../assets/imagem/image-rightbox.png" alt="" >
+            <img src="../assets/imagem/image-rightbox.png" alt="">
         </div>
         <svg style="margin-bottom: -1;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id="dois">
             <path fill="#04294d" fill-opacity="1"
@@ -74,7 +95,8 @@
                     <img src="../assets/imagem/img2.png" alt="">
                 </div>
                 <h4>Gestão Integrada</h4>
-                <h6 class="servicep">Nosso sistema permite a gestão eficiente de clientes, pets, funcionários, produtos e fornecedores.</h6>
+                <h6 class="servicep">Nosso sistema permite a gestão eficiente de clientes, pets, funcionários, produtos e
+                    fornecedores.</h6>
             </div>
         </div>
         <!--Carousel-->
@@ -116,20 +138,22 @@
 import '../css/style.css';
 
 export default {
-    
     data() {
+
         return {
             showModal: false,
             email: '',
             password: '',
             showBackToTop: false,
             activeIndex: 0,
+            loading: true,
             carouselTimer: null,
         }
     },
 
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
+        this.loading = false;
     },
 
     created() {
@@ -151,6 +175,7 @@ export default {
         },
 
         submitForm() {
+           
             const payload = {
                 email: this.email,
                 password: this.password,
@@ -163,7 +188,9 @@ export default {
                 },
                 body: JSON.stringify(payload)
             })
+            
                 .then((response) => {
+                    this.loading = true
                     if (response.ok) {
                         swal({
                             title: 'Está tudo ok ?',
@@ -171,7 +198,7 @@ export default {
                             icon: 'info',
                             button: 'OK'
                         }).then(() => {
-                            window.location.href = 'https://doo-pets.vercel.app/'; 
+                            window.location.href = 'https://doo-pets.vercel.app/';
                         });
                     }
                     else {
@@ -190,42 +217,43 @@ export default {
             this.email = ''
             this.password = ''
             this.closeModal();
+            this.loading = false
         },
 
         prevSlide() {
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        const totalItems = carouselItems.length;
-        const currentIndex = this.activeIndex;
-        const newIndex = (currentIndex - 1 + totalItems) % totalItems;
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const totalItems = carouselItems.length;
+            const currentIndex = this.activeIndex;
+            const newIndex = (currentIndex - 1 + totalItems) % totalItems;
 
-        carouselItems[currentIndex].classList.remove('active');
-        carouselItems[newIndex].classList.add('active');
+            carouselItems[currentIndex].classList.remove('active');
+            carouselItems[newIndex].classList.add('active');
 
-        this.activeIndex = newIndex;
-    },
+            this.activeIndex = newIndex;
+        },
 
-nextSlide() {
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const totalItems = carouselItems.length;
-    const currentIndex = this.activeIndex;
-    const newIndex = (currentIndex + 1) % totalItems;
+        nextSlide() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const totalItems = carouselItems.length;
+            const currentIndex = this.activeIndex;
+            const newIndex = (currentIndex + 1) % totalItems;
 
-    carouselItems[currentIndex].classList.remove('active');
-    carouselItems[newIndex].classList.add('active');
+            carouselItems[currentIndex].classList.remove('active');
+            carouselItems[newIndex].classList.add('active');
 
-    this.activeIndex = newIndex;
-},
+            this.activeIndex = newIndex;
+        },
 
-startCarouselTimer() {
-    this.carouselTimer = setInterval(() => {
-        this.nextSlide();
-    }, 8000);
-},
+        startCarouselTimer() {
+            this.carouselTimer = setInterval(() => {
+                this.nextSlide();
+            }, 8000);
+        },
 
-stopCarouselTimer() {
-    clearInterval(this.carouselTimer);
-    this.carouselTimer = null;
-},
+        stopCarouselTimer() {
+            clearInterval(this.carouselTimer);
+            this.carouselTimer = null;
+        },
 
         handleScroll() {
             this.showBackToTop = window.scrollY > 500;
