@@ -11,7 +11,6 @@
                 <li><a href="#dois">Serviços</a></li>
                 <li><a href="#tres">Carousel</a></li>
             </ul>
-            <h1 class="menu">&#9776;</h1>
         </nav>
         <!--Modal-->
         <div class="modal" v-if="showModal">
