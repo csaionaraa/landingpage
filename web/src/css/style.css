@@ -96,7 +96,7 @@
     border: 2px solid var(--primary-color);
     border-radius: 4px;
     transition: 0.9s;
-    color: #e2ebf4cb;/
+    color: #e2ebf4cb;
 }
 
 .header .main a:hover {
