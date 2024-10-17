@@ -156,7 +156,7 @@ export default {
                 password: this.password,
             };
 
-            fetch('https://petshoptcc.ew.r.appspot.com/register', {
+            fetch('https://apipetshop.sntapi.live/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
